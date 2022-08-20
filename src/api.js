@@ -2,7 +2,7 @@ const express = require("express");
 const serverless = require("serverless-http");
 const mongoose = require("mongoose");
 
-mongoose.connect(SECRET_DB_CONNECTION_STRING);
+mongoose.connect(process.env.SECRET_DB_CONNECTION_STRING);
 const Schema = mongoose.Schema;
 
 const userLogSchema = new Schema(
