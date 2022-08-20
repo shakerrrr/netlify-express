@@ -25,10 +25,10 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/new", (req, res) => {
+router.post("/", (req, res) => {
     const tuple = {
         date: moment().local("de").format("YYYY-MM-DD HH:mm:ss"),
-        version: "0.0",
+        version: req.data.version,
     };
 
     const data = new userLog(tuple);
