@@ -30,7 +30,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     const tuple = {
         date: moment().local("de").format("YYYY-MM-DD HH:mm:ss"),
-        version: req.data.version,
+        version: req.body.version,
     };
 
     const data = new userLog(tuple);
