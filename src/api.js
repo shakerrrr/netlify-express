@@ -2,6 +2,7 @@ const express = require("express");
 const serverless = require("serverless-http");
 const mongoose = require("mongoose");
 const moment = require("moment");
+const cors = require("cors");
 
 mongoose.connect(process.env.SECRET_DB_CONNECTION_STRING);
 const Schema = mongoose.Schema;
@@ -17,6 +18,7 @@ const userLogSchema = new Schema(
 const userLog = mongoose.model("UserLog", userLogSchema);
 
 const app = express();
+app.use(cors());
 const router = express.Router();
 
 router.get("/", (req, res) => {
