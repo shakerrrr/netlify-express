@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
 
 router.get("/new", (req, res) => {
     const tuple = {
-        date: moment.format("YYYY-MM-DD HH:mm:ss"),
+        date: moment().format("YYYY-MM-DD HH:mm:ss"),
         version: "0.0",
     };
 
