@@ -5,9 +5,11 @@ const app = express();
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.json({
-    hello: "hi!"
-  });
+    res.json({
+        host: process.env.SECRET_DB_HOST,
+        user: process.env.SECRET_DB_USER,
+        pw: process.env.SECRET_DB_PW,
+    });
 });
 
 app.use(`/.netlify/functions/api`, router);
