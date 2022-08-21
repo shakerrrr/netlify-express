@@ -30,15 +30,20 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
     console.log(req.body);
-    const tuple = {
-        date: moment().local("de").format("YYYY-MM-DD HH:mm:ss"),
-        app: req.body.app,
-        version: req.body.version,
-    };
+    const { app, version } = req.body;
+    if (app && version) {
+        const tuple = {
+            date: moment().local("de").format("YYYY-MM-DD HH:mm:ss"),
+            app: req.body.app,
+            version: req.body.version,
+        };
 
-    const data = new userLog(tuple);
-    data.save();
-    res.status(200).send("OK");
+        const data = new userLog(tuple);
+        data.save();
+        res.status(200).send("OK");
+    } else {
+        res.status(400).send("FAILURE");
+    }
 });
 
 app.use(`/.netlify/functions/api`, router);
