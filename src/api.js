@@ -29,6 +29,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+    console.log(req.body);
     const tuple = {
         date: moment().local("de").format("YYYY-MM-DD HH:mm:ss"),
         app: req.body.app,
