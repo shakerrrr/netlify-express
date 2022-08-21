@@ -20,6 +20,7 @@ const userLog = mongoose.model("UserLog", userLogSchema);
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -29,7 +30,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    console.log(req.body);
     const { app, version } = req.body;
     if (app && version) {
         const tuple = {
