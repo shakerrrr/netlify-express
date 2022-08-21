@@ -10,6 +10,7 @@ const Schema = mongoose.Schema;
 const userLogSchema = new Schema(
     {
         date: String,
+        app: String,
         version: String,
     },
     { collection: "user_log" }
@@ -30,7 +31,8 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     const tuple = {
         date: moment().local("de").format("YYYY-MM-DD HH:mm:ss"),
-        version: req.body,
+        app: req.body.app,
+        version: req.body.version,
     };
 
     const data = new userLog(tuple);
